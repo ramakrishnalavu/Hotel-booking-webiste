@@ -1,0 +1,18 @@
+package com.hotelbooking.roombooking.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+@Data
+public class PaymentRequest {
+
+    @NotNull(message = "Booking ID is required")
+    private Long bookingId;
+
+    @NotBlank(message = "Payment method is required")
+    private String paymentMethod;
+
+    @NotBlank(message = "Payment source detail (card or UPI ID) is required")
+    private String transactionDetails;
+}
