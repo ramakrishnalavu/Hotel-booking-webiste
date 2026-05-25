@@ -25,7 +25,7 @@ public class RateLimitingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        
+
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
@@ -47,7 +47,8 @@ public class RateLimitingFilter implements Filter {
             logger.warn("Rate limit exceeded for IP: {}. Total requests in minute window: {}", ip, requests);
             httpResponse.setStatus(429);
             httpResponse.setContentType("application/json");
-            httpResponse.getWriter().write("{\"status\": 429, \"error\": \"Too Many Requests\", \"message\": \"Rate limit exceeded. Please try again in a minute.\"}");
+            httpResponse.getWriter().write(
+                    "{\"status\": 429, \"error\": \"Too Many Requests\", \"message\": \"Rate limit exceeded. Please try again in a minute.\"}");
             return;
         }
 

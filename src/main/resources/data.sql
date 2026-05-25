@@ -2,9 +2,9 @@
 
 -- Insert Users (Password is BCrypt hash for 'password')
 INSERT INTO users (full_name, email, password, phone, role, loyalty_points) VALUES
-('John Doe', 'user@hotel.com', '$2a$10$d61rN1g6/n5F7kS2f5rEPeM/Gge2D.t2Vd6f/tO.yQ217s6sK5rSy', '1234567890', 'ROLE_USER', 150),
-('Hotel Manager', 'manager@hotel.com', '$2a$10$d61rN1g6/n5F7kS2f5rEPeM/Gge2D.t2Vd6f/tO.yQ217s6sK5rSy', '9876543210', 'ROLE_MANAGER', 0),
-('System Admin', 'admin@hotel.com', '$2a$10$d61rN1g6/n5F7kS2f5rEPeM/Gge2D.t2Vd6f/tO.yQ217s6sK5rSy', '5555555555', 'ROLE_ADMIN', 0);
+('John Doe', 'user@hotel.com', '$2a$10$lhvcS.M6kIySxtT8qxSTBe9W8RrvskNzKVmDM8Qxm8Ct0xO9InYjm', '1234567890', 'ROLE_USER', 150),
+('Hotel Manager', 'manager@hotel.com', '$2a$10$lhvcS.M6kIySxtT8qxSTBe9W8RrvskNzKVmDM8Qxm8Ct0xO9InYjm', '9876543210', 'ROLE_MANAGER', 0),
+('System Admin', 'admin@hotel.com', '$2a$10$lhvcS.M6kIySxtT8qxSTBe9W8RrvskNzKVmDM8Qxm8Ct0xO9InYjm', '5555555555', 'ROLE_ADMIN', 0);
 
 -- Insert Hotels
 INSERT INTO hotels (hotel_name, description, city, address, rating) VALUES

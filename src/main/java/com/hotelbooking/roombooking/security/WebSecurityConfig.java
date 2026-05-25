@@ -69,6 +69,7 @@ public class WebSecurityConfig {
                     .requestMatchers(HttpMethod.GET, "/api/hotels/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/rooms/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/reviews/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/coupons/validate/**").permitAll()
                     .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                     .requestMatchers("/api/admin/**").hasRole("ADMIN")
                     .requestMatchers("/api/manager/**").hasAnyRole("MANAGER", "ADMIN")

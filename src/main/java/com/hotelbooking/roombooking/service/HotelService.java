@@ -38,7 +38,8 @@ public class HotelService {
     @Cacheable(value = "hotels", key = "#city + '-' + #minRating")
     public List<HotelDTO> searchHotels(String city, Double minRating) {
         logger.info("Executing searchHotels query in database for city: {}, minRating: {} (Cache Miss)", city, minRating);
-        List<Hotel> hotels = hotelRepository.searchHotels(city, minRating);
+        String cityParam = city != null ? city.toLowerCase() : null;
+        List<Hotel> hotels = hotelRepository.searchHotels(cityParam, minRating);
         return hotels.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

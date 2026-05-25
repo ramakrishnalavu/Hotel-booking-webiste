@@ -34,12 +34,11 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 if (jwtUtils.validateJwtToken(jwt)) {
                     String email = jwtUtils.getEmailFromJwtToken(jwt);
                     UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-                    
-                    UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(
-                                    userDetails,
-                                    null,
-                                    userDetails.getAuthorities());
+
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                            userDetails,
+                            null,
+                            userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                     SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -48,7 +47,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                     logger.warn("JWT token validation failed");
                 }
             } else {
-                logger.trace("No Bearer JWT token found in request headers, skipping authentication and continuing chain");
+                logger.trace(
+                        "No Bearer JWT token found in request headers, skipping authentication and continuing chain");
             }
         } catch (Exception e) {
             logger.error("Cannot set user authentication: {}", e.getMessage());

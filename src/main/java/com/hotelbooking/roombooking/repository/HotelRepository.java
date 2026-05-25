@@ -15,7 +15,7 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
     @Query("SELECT DISTINCT h FROM Hotel h " +
            "LEFT JOIN HotelAmenity ha ON ha.hotel.id = h.id " +
-           "WHERE (:city IS NULL OR LOWER(h.city) = LOWER(:city)) " +
+           "WHERE (:city IS NULL OR LOWER(h.city) = :city) " +
            "AND (:minRating IS NULL OR h.rating >= :minRating)")
     List<Hotel> searchHotels(@Param("city") String city,
                              @Param("minRating") Double minRating);
